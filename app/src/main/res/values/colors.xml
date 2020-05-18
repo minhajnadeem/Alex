@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#000000</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#000000</color>
+
+    <color name="colorTextWhite">#FFFFFF</color>
+    <color name="colorTextBlack">#000000</color>
+    <color name="colorScrim">#66000000</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBlack">#000000</color>
+
+    <color name="colorWindowBg">@color/colorWhite</color>
+    <color name="colorOverlayLeft">#80FF0000</color>
+    <color name="colorOverlayRight">#8000FF00</color>
+
+    <!--  VerificationFragment  -->
+    <color name="colorVerificationPage1">#9C27B0</color>
+    <color name="colorVerificationPage2">#673AB7</color>
+    <color name="colorVerificationPage3">#3F51B5</color>
+</resources>

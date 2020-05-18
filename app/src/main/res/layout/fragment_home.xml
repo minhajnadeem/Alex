@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".main.home.HomeFragment">
+
+    <LinearLayout
+        android:id="@+id/layoutPlaceholderTryAgain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dimen_app_logo_top"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/anton"
+            android:text="Run out of profiles"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/anton"
+            android:text="Try again later" />
+
+        <ImageButton
+            android:id="@+id/btnTryAgain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dimen_default_margin"
+            android:background="@drawable/bg_btn_circular_white"
+            android:elevation="@dimen/dimen_btn_elevation"
+            android:src="@drawable/ic_home_reload" />
+    </LinearLayout>
+
+    <com.yuyakaido.android.cardstackview.CardStackView
+        android:id="@+id/layoutCardStack"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/dimen_default_margin"
+        android:layout_marginEnd="@dimen/dimen_default_margin"
+        android:layout_marginBottom="@dimen/dimen_default_margin"
+        app:layout_constraintBottom_toTopOf="@+id/btnHomeStar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </com.yuyakaido.android.cardstackview.CardStackView>
+
+    <ImageButton
+        android:id="@+id/btnHomeStar"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/dimen_default_margin"
+        android:background="@drawable/bg_btn_circular_white"
+        android:elevation="@dimen/dimen_btn_elevation"
+        android:padding="@dimen/dimen_btn_elevation"
+        android:src="@drawable/ic_home_star"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnHomeFav"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnHomeCross" />
+
+    <ImageButton
+        android:id="@+id/btnHomeRefresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dimen_default_margin"
+        android:background="@drawable/bg_btn_circular_white"
+        android:elevation="@dimen/dimen_btn_elevation"
+        android:padding="@dimen/dimen_btn_elevation"
+        android:src="@drawable/ic_home_refresh"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnHomeCross"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnHomeCross"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dimen_default_margin"
+        android:background="@drawable/bg_btn_circular_white"
+        android:elevation="@dimen/dimen_btn_elevation"
+        android:padding="@dimen/dimen_btn_elevation"
+        android:src="@drawable/ic_home_cross"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnHomeStar"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnHomeRefresh" />
+
+    <ImageButton
+        android:id="@+id/btnHomeFav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dimen_default_margin"
+        android:background="@drawable/bg_btn_circular_white"
+        android:elevation="@dimen/dimen_btn_elevation"
+        android:padding="@dimen/dimen_btn_elevation"
+        android:src="@drawable/ic_home_fav"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnHomeBolt"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnHomeStar" />
+
+    <ImageButton
+        android:id="@+id/btnHomeBolt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dimen_default_margin"
+        android:background="@drawable/bg_btn_circular_white"
+        android:elevation="@dimen/dimen_btn_elevation"
+        android:padding="@dimen/dimen_btn_elevation"
+        android:src="@drawable/ic_home_bolt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnHomeFav" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

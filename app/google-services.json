@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "463105223245",
+    "firebase_url": "https://manenos-6afb6.firebaseio.com",
+    "project_id": "manenos-6afb6",
+    "storage_bucket": "manenos-6afb6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:463105223245:android:f0cff5aa236169d0284a04",
+        "android_client_info": {
+          "package_name": "com.example.datingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "463105223245-esvs6at7lvlde67fjt9a6fhb3ba7k12k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.datingapp",
+            "certificate_hash": "c192526fe788733a3a79c5be5e26bb89ed3dc647"
+          }
+        },
+        {
+          "client_id": "463105223245-7k6imslq19o0sjrdccotd2v3oefieaso.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZHoBl69PqJfq2IqNLmJNq9O3vIENY67E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "463105223245-7k6imslq19o0sjrdccotd2v3oefieaso.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,26 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/colorWhite</item>
+    </style>
+
+    <style name="StyleAppName" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/allura</item>
+        <item name="android:textSize">@dimen/dimen_app_name</item>
+        <item name="android:textColor">@color/colorTextBlack</item>
+        <item name="android:layout_marginTop">@dimen/dimen_app_logo_top</item>
+    </style>
+
+    <style name="StyleAuthButton" parent="@style/Widget.AppCompat.Button">
+        <item name="android:textColor">@color/colorTextWhite</item>
+        <item name="fontFamily">@font/anton</item>
+        <item name="android:background">@drawable/bg_btn_rounded_black</item>
+        <item name="android:layout_marginBottom">@dimen/_8sdp</item>
+
+    </style>
+</resources>

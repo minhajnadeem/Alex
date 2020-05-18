@@ -1,0 +1,77 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: 'com.google.gms.google-services'
+
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "com.example.datingapp"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    viewBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.core:core-ktx:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    //sdp
+    implementation "com.intuit.sdp:sdp-android:$rootProject.ext.sdpVersion"
+    //navigation component
+    implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.ext.nav"
+    implementation "androidx.navigation:navigation-ui-ktx:$rootProject.ext.nav"
+    //event bus
+    implementation "org.greenrobot:eventbus:$rootProject.ext.eventBusVersion"
+    //card stack view
+    implementation "com.yuyakaido.android:card-stack-view:$rootProject.ext.cardStackVersion"
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    //camera
+    implementation 'com.camerakit:camerakit:1.0.0-beta3.11'
+    implementation 'com.camerakit:jpegkit:0.1.0'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.0'
+    //circle imageView
+    implementation "de.hdodenhof:circleimageview:$rootProject.ext.circleImageVersion"
+    //play billing
+    implementation "com.android.billingclient:billing:$rootProject.ext.playBillingVersion"
+    implementation "com.android.billingclient:billing-ktx:$rootProject.ext.playBillingVersion"
+    //firebase
+    implementation 'com.google.firebase:firebase-analytics:17.4.1'
+    implementation 'com.google.firebase:firebase-auth:19.3.1'
+    //sign-in
+    implementation 'com.google.android.gms:play-services-auth:18.0.0'
+    implementation 'com.facebook.android:facebook-login:[5,6)'
+    // ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+    def lifecycle_version = "1.1.1"
+    implementation "android.arch.lifecycle:extensions:$lifecycle_version"
+    annotationProcessor "android.arch.lifecycle:compiler:$lifecycle_version"
+
+}
