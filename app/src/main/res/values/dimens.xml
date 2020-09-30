@@ -9,14 +9,25 @@
     <dimen name="dimen_placeholder">@dimen/_100sdp</dimen>
     <dimen name="dimen_btn_radius">@dimen/_48sdp</dimen>
     <dimen name="dimen_btn_padding">@dimen/dimen_default_margin</dimen>
+    <dimen name="dimen_btn_stroke">@dimen/_2sdp</dimen>
+    <dimen name="dimen_char_radius">@dimen/_4sdp</dimen>
+
+
+    <!--  dialog  -->
+    <dimen name="dimen_dialog_corner">@dimen/_30sdp</dimen>
 
     <!--  profile fragment  -->
     <dimen name="dimen_profile_image">@dimen/_100sdp</dimen>
+    <dimen name="dimen_profilefragment_btns_bottom">@dimen/_8sdp</dimen>
+    <dimen name="dimen_profilefragment_btns_txt">@dimen/_14sdp</dimen>
 
     <!--  HomeFragment  -->
     <dimen name="dimen_overlay_text">@dimen/_50sdp</dimen>
     <dimen name="dimen_card_radius">@dimen/_5sdp</dimen>
     <dimen name="dimen_btn_elevation">@dimen/_4sdp</dimen>
+    <dimen name="dimen_bottom_btn">@dimen/_44sdp</dimen>
+    <dimen name="dimen_bottom_ic">@dimen/_24sdp</dimen>
+    <dimen name="dimen_home_drawable_padding">@dimen/_16sdp</dimen>
 
     <!--  ChatNotificationFragment  -->
     <dimen name="dimen_chat_notification_profile">@dimen/_60sdp</dimen>
@@ -25,6 +36,92 @@
     <dimen name="dimen_notification_img">@dimen/_40sdp</dimen>
 
     <!--  VerificationFragment  -->
+    <dimen name="dimen_verification_card">@dimen/_24sdp</dimen>
     <dimen name="dimen_verification_margin">@dimen/_24sdp</dimen>
     <dimen name="dimen_verification_text">@dimen/_24sdp</dimen>
+    <dimen name="dimen_verification_pageindicator_margin">@dimen/_16sdp</dimen>
+
+    <!--LikesFragment-->
+    <dimen name="dimen_liked_img">@dimen/_70sdp</dimen>
+
+    <!--SettingsFragment-->
+    <dimen name="dimen_settings_views">@dimen/_8sdp</dimen>
+
+    <!--EditProfileFragment-->
+    <dimen name="dimen_editprofile_card">@dimen/_8sdp</dimen>
+
+
+    <!--VideoChat-->
+    <dimen name="padding_start">16dp</dimen>
+    <dimen name="padding_actionbar">24dp</dimen>
+    <dimen name="padding_top">16dp</dimen>
+
+    <dimen name="padding_common">8dp</dimen>
+
+    <dimen name="splash_main_text_size">32sp</dimen>
+    <dimen name="splash_version_text_size">12sp</dimen>
+
+    <dimen name="fab_margin_right">16dp</dimen>
+    <dimen name="fab_margin_bottom">16dp</dimen>
+
+    <dimen name="list_item_side_margin">16dp</dimen>
+
+    <dimen name="margin_common">16dp</dimen>
+
+    <dimen name="text_size">20sp</dimen>
+
+    <dimen name="toolbar_elevation">4dp</dimen>
+
+    <dimen name="text_size_ringing">16sp</dimen>
+
+    <dimen name="element_fragment_margin_small">8dp</dimen>
+
+    <dimen name="toggle_button_params">60dp</dimen>
+
+    <dimen name="call_buttons_diameter">64dp</dimen>
+    <dimen name="call_buttons_padding">16dp</dimen>
+
+    <dimen name="padding_outgoing_screen">48dp</dimen>
+
+    <dimen name="text_size_call">18sp</dimen>
+
+    <dimen name="item_height">136dp</dimen>
+
+    <dimen name="margin_very_small">3dp</dimen>
+
+    <dimen name="margin_small">8dp</dimen>
+
+    <dimen name="toggle_button_params_small">30dp</dimen>
+
+    <dimen name="item_width">80dp</dimen>
+
+    <dimen name="element_fragment_margin">30dp</dimen>
+
+    <dimen name="grid_item_divider">1dp</dimen>
+
+    <dimen name="list_item_padding">8dp</dimen>
+
+    <dimen name="action_bar_height">80dp</dimen>
+
+    <dimen name="also_in_call_text_left_right_padding">64dp</dimen>
+
+    <dimen name="call_avatar_diameter">78dp</dimen>
+
+    <dimen name="padding_top_large">24dp</dimen>
+
+    <dimen name="caller_name_text_size">22sp</dimen>
+
+    <dimen name="also_on_call_text_size">16sp</dimen>
+
+    <dimen name="other_inc_users_text_size">16sp</dimen>
+
+    <dimen name="incoming_call_type_text_size">16sp</dimen>
+
+    <dimen name="padding_bottom">62dp</dimen>
+
+    <dimen name="income_call_buttons_margin">88dp</dimen>
+
+    <!--Pager fragment-->
+    <dimen name="pager_image_width">400dp</dimen>
+    <dimen name="pager_image_height">500dp</dimen>
 </resources>

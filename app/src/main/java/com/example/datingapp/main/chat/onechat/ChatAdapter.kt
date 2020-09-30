@@ -1,11 +1,10 @@
-package com.example.datingapp.main.chat
+package com.example.datingapp.main.chat.onechat
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.datingapp.R
-import com.example.datingapp.main.home.HomeAdapter
 
 class ChatAdapter : RecyclerView.Adapter<ChatAdapter.MyViewHolder>() {
 

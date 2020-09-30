@@ -27,7 +27,7 @@
         android:layout_marginTop="@dimen/dimen_default_margin"
         android:layout_marginEnd="16dp"
         android:gravity="center"
-        android:text="Our team will verify you soon. Till then stay tuned!"
+        android:text="@string/str_block_soon"
         android:textColor="@android:color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"

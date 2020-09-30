@@ -3,8 +3,8 @@
 
     <group android:checkableBehavior="single">
 
-    <item android:id="@+id/menu_profile" android:icon="@drawable/ic_menu_profile" android:title="Profile"/>
-    <item android:id="@+id/menu_likes" android:icon="@drawable/ic_menu_likes" android:title="Likes"/>
+    <item android:id="@+id/menu_profile" android:icon="@drawable/ic_home_menu_profile" android:title="Profile"/>
+    <item android:id="@+id/menu_likes" android:icon="@drawable/ic_menu_likes" android:title="Likes" android:visible="false"/>
     <item android:id="@+id/menu_home" android:icon="@drawable/ic_menu_home" android:title="Home" android:checked="true"/>
     <item android:id="@+id/menu_notification" android:icon="@drawable/ic_menu_notification" android:title="Notifications" />
     <item android:id="@+id/menu_chat" android:icon="@drawable/ic_menu_chat" android:title="Chat"/>

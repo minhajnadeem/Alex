@@ -21,15 +21,14 @@
         android:orientation="vertical"
         app:layout_constraintGuide_end="@dimen/dimen_default_margin" />
 
-    <TextView
+    <ImageView
         android:id="@+id/tvAppName"
-        style="@style/StyleAppName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="@dimen/dimen_app_logo"
+        android:layout_height="@dimen/dimen_app_logo"
+        android:layout_marginTop="@dimen/dimen_app_logo_top"
+        android:src="@drawable/img_splash_logo"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -38,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/dimen_default_margin"
         android:gravity="center"
-        android:text="By click below you are agree to out terms and service"
+        android:text="@string/str_login_terms"
         app:layout_constraintBottom_toTopOf="@+id/btnLoginFb"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintHorizontal_bias="0.5"
@@ -66,7 +65,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:drawableLeft="@drawable/ic_gmail_login"
-        android:text="login witth google"
+        android:text="login with google"
         app:layout_constraintBottom_toTopOf="@+id/btnLoginEmail"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintHorizontal_bias="0.5"
@@ -88,5 +87,15 @@
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/btnLoginGoogle"
         app:layout_constraintVertical_chainStyle="packed" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/tvAppName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

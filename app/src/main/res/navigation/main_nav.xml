@@ -12,14 +12,21 @@
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/chatFragment"
-        android:name="com.example.datingapp.main.chat.ChatFragment"
+        android:name="com.example.datingapp.main.chat.onechat.ChatFragment"
         android:label="fragment_chat"
         tools:layout="@layout/fragment_chat" />
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.datingapp.main.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/likesFragment"
         android:name="com.example.datingapp.main.likes.LikesFragment"
@@ -39,4 +46,21 @@
             android:id="@+id/action_chatNotificationFragment_to_chatFragment"
             app:destination="@id/chatFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.datingapp.settings.SettingsFragment"
+        android:label="SettingsFragment" >
+        <action
+            android:id="@+id/action_settingsFragment_to_authActivity"
+            app:destination="@id/authActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.datingapp.editprofile.EditProfileFragment"
+        android:label="EditProfileFragment" />
+    <activity
+        android:id="@+id/authActivity"
+        android:name="com.example.datingapp.auth.AuthActivity"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login" />
 </navigation>

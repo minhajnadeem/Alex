@@ -3,6 +3,8 @@ package com.example.datingapp.utils
 import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
+import com.example.datingapp.networking.AuthResponse
+import com.google.gson.Gson
 
 abstract class BasePreferences(context: Context) {
     private val name: String = "datingapp.Preferences"
@@ -11,7 +13,7 @@ abstract class BasePreferences(context: Context) {
     private var editor: SharedPreferences.Editor = sharedPreferences.edit()
 
 
-    fun putString(key: String, value: String) {
+    fun putString(key: String, value: String?) {
         editor.putString(key, value)
         editor.commit()
     }
@@ -27,5 +29,30 @@ abstract class BasePreferences(context: Context) {
 
     fun getBool(key: String, defValue: Boolean): Boolean {
         return sharedPreferences.getBoolean(key, defValue)
+    }
+
+    fun <T> getObject(key: String, classOfT: Class<T>): T? {
+        val gson = Gson()
+        val stringObj = getString(key, "")
+        return if (stringObj != null) {
+            if (stringObj.isEmpty()) {
+                null
+            } else {
+                gson.fromJson(stringObj, classOfT)
+            }
+        } else {
+            null
+        }
+    }
+
+    fun <T> putObject(key: String, value: T) {
+        val gson = Gson()
+        val jsonObj = gson.toJson(value)
+        putString(key, jsonObj)
+    }
+
+    fun clear() {
+        editor.clear()
+        editor.apply()
     }
 }

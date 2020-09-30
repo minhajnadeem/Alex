@@ -14,8 +14,8 @@
         android:layout_marginEnd="@dimen/dimen_verification_margin"
         android:fontFamily="@font/anton"
         android:gravity="center"
-        android:text="Team Tindo will verify you. You need to provide us your proper photo."
-        android:textColor="@color/colorWhite"
+        android:text="@string/str_verification_page1"
+        android:textColor="@color/colorTextBlack"
         android:textSize="@dimen/_24sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,8 +28,9 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dimen_default_margin"
         android:background="@color/colorVerificationPage1"
+        android:tint="@color/colorWhite"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_verificatoion_swipe_right"
-        android:tint="@color/colorWhite"/>
+        app:srcCompat="@drawable/ic_verificatoion_swipe_right" />
 </androidx.constraintlayout.widget.ConstraintLayout>

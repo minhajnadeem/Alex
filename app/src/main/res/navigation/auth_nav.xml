@@ -31,6 +31,10 @@
             app:destination="@id/blockFragment"
             app:popUpTo="@id/auth_nav"
             app:popUpToInclusive="true"/>
+
+        <action
+            android:id="@+id/action_verificationFragment_to_homeActivity"
+            app:destination="@id/homeActivity" />
     </fragment>
     <fragment
         android:id="@+id/blockFragment"

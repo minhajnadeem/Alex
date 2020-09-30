@@ -23,11 +23,29 @@ class MyPermissions(val activity: Activity) {
     private val STR_PERMISSION_CAMERA = android.Manifest.permission.CAMERA
     private val cameraPermission = arrayOf(STR_PERMISSION_CAMERA)
 
+    //read external storage
+    private val rcExternalStoragePermission = Constants.RC_PERMISSION_STORAGE
+    private val strPermissionStorage = android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+    private val storagePermission = arrayOf(strPermissionStorage)
+
     fun hasCameraPermission(shouldRequestPermission: Boolean = true): Boolean {
         if (hasPermission(STR_PERMISSION_CAMERA)) {
             return true
         } else if (shouldRequestPermission) {
             ActivityCompat.requestPermissions(activity, cameraPermission, rcCameraPermission)
+        }
+        return false
+    }
+
+    fun hasStoragePermission(shouldRequestPermission: Boolean = true): Boolean {
+        if (hasPermission(strPermissionStorage)) {
+            return true
+        } else if (shouldRequestPermission) {
+            ActivityCompat.requestPermissions(
+                activity,
+                storagePermission,
+                rcExternalStoragePermission
+            )
         }
         return false
     }
@@ -55,6 +73,12 @@ class MyPermissions(val activity: Activity) {
             } else {
                 // permission denied, boo! Disable the
                 // functionality that depends on this permission.
+            }
+        } else if (requestCode == rcExternalStoragePermission) {
+            if (isPermissionGranted(permissions, grantResults)) {
+
+            } else {
+
             }
         }
     }

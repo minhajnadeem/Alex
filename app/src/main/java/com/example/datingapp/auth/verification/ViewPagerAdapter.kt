@@ -1,10 +1,12 @@
 package com.example.datingapp.auth.verification
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import androidx.viewpager.widget.PagerAdapter
 import com.example.datingapp.R
 
@@ -18,6 +20,7 @@ class ViewPagerAdapter(
     lateinit var btnTakePhoto: Button
     lateinit var btnGallary: Button
     lateinit var btnUploadPhoto: Button
+    lateinit var ivVerificationPhoto: ImageView
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val inflater = LayoutInflater.from(context)
@@ -32,6 +35,9 @@ class ViewPagerAdapter(
 
         when (position) {
             2 -> {
+
+                ivVerificationPhoto = layout.findViewById(R.id.ivVerificationPhoto)
+
                 btnTakePhoto = layout.findViewById(R.id.btnTakePhoto)
                 btnTakePhoto.setOnClickListener {
                     verificationFragment.cameraIntent()
@@ -64,4 +70,7 @@ class ViewPagerAdapter(
 
     }
 
+    fun setVerificationPhoto(bitmap: Bitmap) {
+        ivVerificationPhoto.setImageBitmap(bitmap)
+    }
 }

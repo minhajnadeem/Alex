@@ -1,5 +1,6 @@
 package com.example.datingapp.main.chat
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,10 @@ import androidx.navigation.fragment.findNavController
 
 import com.example.datingapp.R
 import com.example.datingapp.databinding.FragmentChatNotificationBinding
+import com.example.datingapp.networking.ApiListener
+import com.example.datingapp.networking.AuthBody
+import com.example.datingapp.networking.MatchedListResponse
+import com.example.datingapp.utils.MyPreferences
 
 /**
  * A simple [Fragment] subclass.
@@ -16,6 +21,16 @@ import com.example.datingapp.databinding.FragmentChatNotificationBinding
 class ChatNotificationFragment : Fragment() {
 
     private lateinit var binding: FragmentChatNotificationBinding
+    private lateinit var chatNotificationModel: ChatNotificationModel
+    private lateinit var myPreferences: MyPreferences
+    private lateinit var chatNotificationAdapter: ChatNotificationAdapter
+
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        chatNotificationModel = ChatNotificationModel()
+        myPreferences = MyPreferences(context)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,11 +43,21 @@ class ChatNotificationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.rowLayoutChat.setOnClickListener {
-            findNavController().navigate(R.id.chatFragment)
-        }
-        binding.rowLayoutChat2.setOnClickListener {
-            findNavController().navigate(R.id.chatFragment)
-        }
+
+        chatNotificationModel.exeChatListApi(AuthBody(myPreferences.getAuthToken()),
+            object : ApiListener<MatchedListResponse> {
+                override fun onSuccess(body: MatchedListResponse?) {
+                    chatNotificationAdapter.setData(body!!.profiles)
+                }
+
+                override fun onFailure(error: Throwable) {
+                    error.printStackTrace()
+                }
+
+            })
+
+        chatNotificationAdapter = ChatNotificationAdapter(requireContext())
+        binding.rvChatNotifications.adapter = chatNotificationAdapter
+
     }
 }

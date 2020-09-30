@@ -12,6 +12,9 @@ class Constants {
 
         /** Permission Request Code **/
         const val RC_PERMISSION_CAMERA = 200
+        const val RC_PERMISSION_STORAGE = 201
 
+        /** Strings **/
+        const val STR_UNKNOWN_ERROR = "Something went wrong! Please try again later."
     }
 }
