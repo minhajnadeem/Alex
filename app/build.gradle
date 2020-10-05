@@ -95,4 +95,6 @@ dependencies {
     //videochat
     implementation "com.quickblox:quickblox-android-sdk-videochat-webrtc:3.9.2"
 
+    //location
+    implementation "com.google.android.gms:play-services-location:17.1.0"
 }

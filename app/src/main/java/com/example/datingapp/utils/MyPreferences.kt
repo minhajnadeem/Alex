@@ -1,6 +1,7 @@
 package com.example.datingapp.utils
 
 import android.content.Context
+import android.location.Location
 import com.example.datingapp.networking.AuthResponse
 import com.example.datingapp.networking.ProfileResponse
 
@@ -17,8 +18,17 @@ class MyPreferences(context: Context) : BasePreferences(context) {
         val KEY_IS_FIRST_START = "key_is_first_start"
         val KEY_PROFILE = "key_profile"
         val KEY_FCM_TOKEN = "key_fcm_token"
+        val KEY_CURRENT_LOCATION = "key_current_location"
 
     }
+
+    var currentLocation: Location?
+        get() {
+            return getObject(KEY_CURRENT_LOCATION, Location::class.java)
+        }
+        set(value) {
+            putObject(KEY_CURRENT_LOCATION, value)
+        }
 
     var profile: ProfileResponse?
         get() {

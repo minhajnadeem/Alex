@@ -1,9 +1,14 @@
 package com.example.datingapp.main
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -20,6 +25,8 @@ import com.example.quickbloxvideocall.LoginService
 import com.example.quickbloxvideocall.PERMISSIONS
 import com.example.quickbloxvideocall.PermissionsActivity
 import com.facebook.login.LoginManager
+import com.google.android.gms.common.api.GoogleApiClient
+import com.google.android.gms.location.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.quickblox.auth.session.QBSettings
@@ -33,7 +40,9 @@ class MainActivity : BaseActivity() {
     lateinit var myPreferences: MyPreferences
     private lateinit var binding: ActivityMainBinding
     private lateinit var bottomNavigationView: BottomNavigationView
-
+    //location
+    private var mFusedLocationClient: FusedLocationProviderClient? = null
+    private var mLocationCallback: LocationCallback? = null
     //videoChat
     var currentUser: QBUser? = null
 
@@ -54,6 +63,87 @@ class MainActivity : BaseActivity() {
         if (checkPermissions(PERMISSIONS)) {
             startPermissionsActivity(false)
         }
+        setUpLocationListener()
+    }
+
+    private fun fetchCurrentLocation() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                showPermissionAlert()
+                return
+            }
+        }
+        mFusedLocationClient!!.requestLocationUpdates(getLocationRequest(), mLocationCallback, null /* Looper */)
+    }
+
+    private fun getLocationRequest(): LocationRequest? {
+        val locationRequest = LocationRequest()
+        locationRequest.interval = 10000
+        locationRequest.fastestInterval = 900
+        locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+        return locationRequest
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String?>,
+                                            grantResults: IntArray) {
+        when (requestCode) {
+            123 -> {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults[0] == PackageManager.PERMISSION_DENIED) {
+                    showPermissionAlert()
+                } else {
+                    if (ActivityCompat.checkSelfPermission(
+                            this,
+                            Manifest.permission.ACCESS_FINE_LOCATION
+                        ) == PackageManager.PERMISSION_GRANTED
+                        && ActivityCompat.checkSelfPermission(
+                            this,
+                            Manifest.permission.ACCESS_COARSE_LOCATION
+                        ) == PackageManager.PERMISSION_GRANTED
+                    ) {
+                        fetchCurrentLocation()
+                    }
+                }
+            }
+        }
+    }
+
+    private fun showPermissionAlert() {
+        if (ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+            ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                ActivityCompat.requestPermissions(this, arrayOf(
+                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_BACKGROUND_LOCATION), 123)
+            }else{
+                ActivityCompat.requestPermissions(this, arrayOf(
+                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.ACCESS_FINE_LOCATION), 123)
+            }
+        }
+    }
+
+    private fun setUpLocationListener() {
+        mLocationCallback = object : LocationCallback() {
+            override fun onLocationResult(locationResult: LocationResult?) {
+                myPreferences.currentLocation=locationResult!!.lastLocation
+                val loc=myPreferences.currentLocation
+                Toast.makeText(
+                    this@MainActivity,
+                    "Current Loc = ${loc!!.latitude}",
+                    Toast.LENGTH_LONG
+                ).show()
+                //stopLocationUpdates()
+            }
+        }
+    }
+
+    private fun stopLocationUpdates() {
+        mFusedLocationClient!!.removeLocationUpdates(mLocationCallback)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -86,7 +176,7 @@ class MainActivity : BaseActivity() {
                 return@OnNavigationItemSelectedListener true
             }
         bottomNavigationView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
-
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
     }
 
     private fun startPermissionsActivity(checkOnlyAudio: Boolean) {
@@ -127,5 +217,10 @@ class MainActivity : BaseActivity() {
             LoginService.start(this, currentUser!!)
         }
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        fetchCurrentLocation()
     }
 }
