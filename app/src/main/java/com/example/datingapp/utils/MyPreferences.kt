@@ -2,6 +2,7 @@ package com.example.datingapp.utils
 
 import android.content.Context
 import android.location.Location
+import com.example.datingapp.main.LocationModel
 import com.example.datingapp.networking.AuthResponse
 import com.example.datingapp.networking.ProfileResponse
 
@@ -22,9 +23,9 @@ class MyPreferences(context: Context) : BasePreferences(context) {
 
     }
 
-    var currentLocation: Location?
+    var currentLocation: LocationModel?
         get() {
-            return getObject(KEY_CURRENT_LOCATION, Location::class.java)
+            return getObject(KEY_CURRENT_LOCATION, LocationModel::class.java)
         }
         set(value) {
             putObject(KEY_CURRENT_LOCATION, value)

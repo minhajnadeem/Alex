@@ -60,7 +60,7 @@
                 android:layout_marginBottom="@dimen/dimen_settings_views">
 
                 <RelativeLayout
-                    android:id="@+id/layoutBlockedUsers"
+                    android:id="@+id/layoutAddress"
                     style="@style/StyleSettingsFragmentBtns"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_40sdp">

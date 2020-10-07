@@ -130,14 +130,10 @@ class MainActivity : BaseActivity() {
     private fun setUpLocationListener() {
         mLocationCallback = object : LocationCallback() {
             override fun onLocationResult(locationResult: LocationResult?) {
-                myPreferences.currentLocation=locationResult!!.lastLocation
+                val location = LocationModel(locationResult!!.lastLocation.latitude,locationResult.lastLocation.longitude)
+                myPreferences.currentLocation = location
                 val loc=myPreferences.currentLocation
-                Toast.makeText(
-                    this@MainActivity,
-                    "Current Loc = ${loc!!.latitude}",
-                    Toast.LENGTH_LONG
-                ).show()
-                //stopLocationUpdates()
+                stopLocationUpdates()
             }
         }
     }

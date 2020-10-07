@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.example.datingapp.R
 import com.example.datingapp.auth.AuthActivity
 import com.example.datingapp.databinding.FragmentSettingsBinding
 import com.example.datingapp.main.MainActivity
@@ -41,6 +43,9 @@ class SettingsFragment : Fragment() {
                 flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                 startActivity(this)
             }
+        }
+        binding.layoutAddress.setOnClickListener {
+                findNavController().navigate(R.id.action_settingsFragment_to_addressFragment)
         }
     }
 }

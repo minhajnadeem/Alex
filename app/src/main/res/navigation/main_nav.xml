@@ -53,11 +53,18 @@
         <action
             android:id="@+id/action_settingsFragment_to_authActivity"
             app:destination="@id/authActivity" />
+        <action
+            android:id="@+id/action_settingsFragment_to_addressFragment"
+            app:destination="@id/addressFragment" />
     </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
         android:name="com.example.datingapp.editprofile.EditProfileFragment"
         android:label="EditProfileFragment" />
+    <fragment
+        android:id="@+id/addressFragment"
+        android:name="com.example.datingapp.address.AddressFragment"
+        android:label="AddressFragment" />
     <activity
         android:id="@+id/authActivity"
         android:name="com.example.datingapp.auth.AuthActivity"
