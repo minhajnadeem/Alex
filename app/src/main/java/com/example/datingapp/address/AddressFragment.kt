@@ -76,7 +76,8 @@ class AddressFragment : Fragment() {
     }
 
     private fun updateAdress() {
-        Toast.makeText(requireContext(), "Updating Adress", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), "Updated Adress", Toast.LENGTH_LONG).show()
+        findNavController().popBackStack()
         /*val listener = object : ApiListener<UpdateProfileResponse> {
             override fun onSuccess(body: UpdateProfileResponse?) {
                 if (body != null) {
