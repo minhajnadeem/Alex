@@ -47,6 +47,10 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etAddress"
+                    android:maxLines="1"
+                    android:inputType="text"
+                    android:scrollHorizontally="true"
+                    android:ellipsize="end"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -72,6 +76,10 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etState"
+                    android:maxLines="1"
+                    android:inputType="text"
+                    android:scrollHorizontally="true"
+                    android:ellipsize="end"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -97,6 +105,10 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etCity"
+                    android:maxLines="1"
+                    android:inputType="text"
+                    android:scrollHorizontally="true"
+                    android:ellipsize="end"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -122,6 +134,10 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etStreet"
+                    android:maxLines="1"
+                    android:inputType="text"
+                    android:scrollHorizontally="true"
+                    android:ellipsize="end"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -147,6 +163,10 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etZipCode"
+                    android:maxLines="1"
+                    android:inputType="text"
+                    android:scrollHorizontally="true"
+                    android:ellipsize="end"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
