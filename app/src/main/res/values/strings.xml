@@ -18,7 +18,7 @@
     <string name="str_verification_btn_photo">Take a Photo</string>
     <string name="str_verification_btn_gallery">Take From Gallery</string>
     <string name="str_verification_upload">Upload</string>
-    <string name="str_verification_encourage">Team Roxy encourages you to take photo like this one</string>
+    <string name="str_verification_encourage">Team Roxy encourages you to take a photo like this one</string>
     <string name="str_block_soon">Team Roxy will verify you soon. Till then stay tuned!</string>
     <string name="str_likes_placeholder_heading">No Likes Just Yet!</string>
     <string name="str_likes_placeholder_summary">Boost your visibility with Roxy Gold</string>
@@ -237,6 +237,7 @@
     <string name="error_max_opponents_count">You can select up to %d opponents</string>
     <string name="error_permission_video">You should allow Camera permission</string>
     <string name="error_permission_audio">You should allow Microphone permission</string>
+    <string name="str_select_date_of_birth">Select Date Of Birth</string>
     <!--VideoCall end-->
 
 </resources>

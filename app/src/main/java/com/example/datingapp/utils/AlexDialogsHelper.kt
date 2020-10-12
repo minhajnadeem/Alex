@@ -1,6 +1,8 @@
 package com.example.datingapp.utils
 
 import android.app.AlertDialog
+import android.app.DatePickerDialog
+import android.app.DatePickerDialog.OnDateSetListener
 import android.app.Dialog
 import android.content.Context
 import android.content.DialogInterface
@@ -12,6 +14,8 @@ import android.widget.*
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import com.example.datingapp.R
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 interface LoginDialogListener {
@@ -20,7 +24,7 @@ interface LoginDialogListener {
 }
 
 interface RegisterDialogListener {
-    fun onClickRegister(displayName: String, email: String, password: String)
+    fun onClickRegister(displayName: String, email: String, password: String,dob:Long)
     fun onClickLogin()
 }
 
@@ -108,6 +112,9 @@ class AlexDialogsHelper {
     class RegisterDialog(val listener: RegisterDialogListener) : DialogFragment() {
 
         private lateinit var progressBar: ProgressBar
+        val myCalendar:Calendar = Calendar.getInstance()
+        private lateinit var editTextDob: EditText
+        private var dateOfBirth:Long = 0
 
         override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
             val builder = AlertDialog.Builder(context)
@@ -120,6 +127,15 @@ class AlexDialogsHelper {
             return dialog
         }
 
+        var date =
+            OnDateSetListener { view, year, monthOfYear, dayOfMonth -> // TODO Auto-generated method stub
+                myCalendar[Calendar.YEAR] = year
+                myCalendar[Calendar.MONTH] = monthOfYear
+                myCalendar[Calendar.DAY_OF_MONTH] = dayOfMonth
+                dateOfBirth = myCalendar.timeInMillis
+                updateLabel()
+            }
+
         private fun initViews(view: View?) {
             if (view != null) {
                 progressBar = view.findViewById<ProgressBar>(R.id.progressBar)
@@ -128,13 +144,22 @@ class AlexDialogsHelper {
                 val etDisplayName = view.findViewById<EditText>(R.id.etDisplayName)
                 val etPassword = view.findViewById<EditText>(R.id.etPassword)
                 val etEmail = view.findViewById<EditText>(R.id.etEmail)
+                val etDOB = view.findViewById<EditText>(R.id.etDOB)
+                editTextDob=etDOB
                 btnLogin.setOnClickListener {
                     progressBar.visibility = View.VISIBLE
                     listener.onClickRegister(
                         etDisplayName.text.toString(),
                         etEmail.text.toString(),
-                        etPassword.text.toString()
+                        etPassword.text.toString(),
+                        dateOfBirth
                     )
+                }
+                editTextDob.setOnClickListener {
+                    DatePickerDialog(
+                        it.context, date, myCalendar[Calendar.YEAR], myCalendar[Calendar.MONTH],
+                        myCalendar[Calendar.DAY_OF_MONTH]
+                    ).show()
                 }
                 val tvNotRegistered = view.findViewById<TextView>(R.id.tvAlreadyRegistered)
                 tvNotRegistered.setOnClickListener {
@@ -142,6 +167,12 @@ class AlexDialogsHelper {
                     listener.onClickLogin()
                 }
             }
+        }
+
+        private fun updateLabel() {
+            val myFormat = "MM/dd/yy" //In which you need put here
+            val sdf = SimpleDateFormat(myFormat, Locale.US)
+            editTextDob.setText(sdf.format(myCalendar.getTime()))
         }
 
         fun hideProgressBar() {

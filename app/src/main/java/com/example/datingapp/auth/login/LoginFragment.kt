@@ -198,13 +198,14 @@ class LoginFragment : Fragment() {
                             override fun onClickRegister(
                                 displayName: String,
                                 email: String,
-                                password: String
+                                password: String,
+                                dob:Long
                             ) {
                                 loginFragmentModel.exeRegisterApi(
                                     displayName,
                                     email,
                                     password,
-                                    1589316956
+                                    dob
                                     , fcmToken
                                     , registerListener
                                 )

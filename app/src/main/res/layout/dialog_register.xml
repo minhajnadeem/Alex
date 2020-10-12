@@ -56,6 +56,21 @@
         app:layout_constraintStart_toStartOf="@+id/guideline8"
         app:layout_constraintTop_toBottomOf="@+id/etEmail" />
 
+    <EditText
+        android:id="@+id/etDOB"
+        style="@style/StyleAuthFields"
+        android:layout_width="0dp"
+        android:background="@drawable/bg_btn_rounded_stroke"
+        android:ems="10"
+        android:hint="@string/str_select_date_of_birth"
+        android:inputType="text"
+        android:clickable="true"
+        android:editable="false"
+        app:layout_constraintEnd_toStartOf="@+id/guideline9"
+        app:layout_constraintStart_toStartOf="@+id/guideline8"
+        app:layout_constraintTop_toBottomOf="@+id/etPassword"
+        android:focusable="false" />
+
     <Button
         android:id="@+id/btnRegister"
         style="@style/StyleAuthButton"
@@ -65,7 +80,7 @@
         android:text="@string/str_register_btn"
         app:layout_constraintEnd_toStartOf="@+id/guideline9"
         app:layout_constraintStart_toStartOf="@+id/guideline8"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/etDOB" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline8"
