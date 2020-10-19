@@ -30,6 +30,7 @@ import com.example.datingapp.utils.MyPreferences
 import com.facebook.FacebookSdk.getCacheDir
 import com.yalantis.ucrop.UCrop
 import java.io.File
+import java.util.*
 
 
 /**
@@ -75,6 +76,7 @@ class ProfileFragment : Fragment() {
         myProfile?.also {
             Glide.with(this).load(it.profilePic).into(binding.ivProfile)
             binding.tvProfileName.text = it.userName
+            setAge(it.dob)
             if (it.address.street == null) {
                 binding.tvProfileAddress.text = "Add your address"
             } else {
@@ -93,9 +95,19 @@ class ProfileFragment : Fragment() {
         binding.btnProfilePicture.setOnClickListener {
             showProfilePictureChooser()
         }
+
         binding.btnEditProfile.setOnClickListener {
             findNavController().navigate(R.id.action_profileFragment_to_editProfileFragment)
         }
+    }
+
+    private fun setAge(dob: Long) {
+        val calendar =  Calendar.getInstance()
+        val currentYear:Int = calendar.get(Calendar.YEAR)
+        calendar.timeInMillis = dob
+        val birthYear:Int = calendar.get(Calendar.YEAR)
+        val age:Int = currentYear-birthYear
+        binding.tvProfileAge.text = "$age Years"
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

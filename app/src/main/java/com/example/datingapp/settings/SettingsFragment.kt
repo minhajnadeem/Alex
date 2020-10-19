@@ -6,14 +6,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.datingapp.R
-import com.example.datingapp.auth.AuthActivity
 import com.example.datingapp.databinding.FragmentSettingsBinding
-import com.example.datingapp.main.MainActivity
 import com.example.datingapp.splash.SplashActivity
 import com.example.datingapp.utils.MyPreferences
+
 
 class SettingsFragment : Fragment() {
 
@@ -46,6 +46,22 @@ class SettingsFragment : Fragment() {
         }
         binding.layoutAddress.setOnClickListener {
                 findNavController().navigate(R.id.action_settingsFragment_to_addressFragment)
+        }
+        val rangeSeekbar = binding.rangeSeekbar1
+        rangeSeekbar.setOnRangeSeekbarChangeListener { minValue, maxValue ->
+            binding.tvAgeRange.text = "Age $minValue-$maxValue"
+        }
+
+        rangeSeekbar.setOnRangeSeekbarFinalValueListener { minValue, maxValue ->
+           // Toast.makeText(activity, "$minValue : $maxValue", Toast.LENGTH_SHORT).show()
+        }
+        val rangeSeekbarDistance = binding.rangeSeekbar2
+        rangeSeekbarDistance.setOnRangeSeekbarChangeListener { minValue, maxValue ->
+            binding.tvDistanceSeekbar.text = "Distance $minValue-$maxValue"
+        }
+
+        rangeSeekbarDistance.setOnRangeSeekbarFinalValueListener { minValue, maxValue ->
+            //Toast.makeText(activity, "$minValue : $maxValue", Toast.LENGTH_SHORT).show()
         }
     }
 }

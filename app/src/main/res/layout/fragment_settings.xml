@@ -98,24 +98,62 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tvAgeRange"
                         style="@style/StyleSettingsFragmentLblDesc"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="age" />
-
-                    <SeekBar
+                        android:text="age 20-50"
+                        />
+                    <com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar
+                        android:id="@+id/rangeSeekbar1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        app:steps="5"
+                        app:gap="5"
+                        app:min_value="20"
+                        app:max_value="50"
+                        app:corner_radius="5"
+                        app:bar_highlight_color="@color/colorPrimaryDark"
+                        app:left_thumb_color_pressed="@color/colorPrimaryDark"
+                        app:left_thumb_color="@color/colorPrimaryDark"
+                        app:right_thumb_color_pressed="@color/colorPrimaryDark"
+                        app:right_thumb_color="@color/colorPrimaryDark"
+                        app:bar_color="@color/colorBlack"/>
+
+                    <!--<SeekBar
+                        android:id="@+id/ageSeekbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:max="6"
+                        android:min="0"/>-->
 
                     <TextView
+                        android:id="@+id/tvDistanceSeekbar"
                         style="@style/StyleSettingsFragmentLblDesc"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
                         android:text="distance" />
 
-                    <SeekBar
+                    <!--<SeekBar
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content" />-->
+                    <com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar
+                        android:id="@+id/rangeSeekbar2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:steps="5"
+                        app:gap="5"
+                        app:min_value="20"
+                        app:max_value="50"
+                        app:corner_radius="5"
+                        app:bar_highlight_color="@color/colorPrimaryDark"
+                        app:left_thumb_color_pressed="@color/colorPrimaryDark"
+                        app:left_thumb_color="@color/colorPrimaryDark"
+                        app:right_thumb_color_pressed="@color/colorPrimaryDark"
+                        app:right_thumb_color="@color/colorPrimaryDark"
+                        app:bar_color="@color/colorBlack"
+                        android:layout_marginBottom="@dimen/_10sdp"/>
                 </LinearLayout>
 
 

@@ -14,6 +14,7 @@ import android.widget.Toast
 import com.example.datingapp.databinding.FragmentHomeBinding
 import com.example.datingapp.networking.ApiListener
 import com.example.datingapp.networking.HomeResponse
+import com.example.datingapp.networking.ProfileResponse
 import com.example.datingapp.networking.SuccessResponse
 import com.example.datingapp.utils.AlexDialogsHelper
 import com.example.datingapp.utils.MyPreferences
@@ -38,6 +39,7 @@ class HomeFragment : Fragment(), CardStackListener {
     private lateinit var swipeLeftAnim: SwipeAnimationSetting
     private lateinit var swipeRewindAnim: RewindAnimationSetting
     private val alexDialogsHelper = AlexDialogsHelper()
+    private lateinit var profileList:List<ProfileResponse>
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -102,6 +104,7 @@ class HomeFragment : Fragment(), CardStackListener {
                 override fun onSuccess(body: HomeResponse?) {
                     if (body != null) {
                         if (body.success) {
+                            profileList=body.profiles
                             homeAdapter = HomeAdapter(body.profiles.reversed())
                             binding.layoutCardStack.adapter = homeAdapter
                         } else {
@@ -165,34 +168,42 @@ class HomeFragment : Fragment(), CardStackListener {
     }
 
     private fun profileLiked() {
-        val profile = homeAdapter.getProfileByPosition(cardStackLayoutManager.topPosition)
-        homeFragmentModel.exeLikeApi(
-            profile.id,
-            myPreferences.getAuthToken(),
-            object : ApiListener<SuccessResponse> {
-                override fun onSuccess(body: SuccessResponse?) {
+        if(cardStackLayoutManager.topPosition!=profileList.size) {
+            val profile = homeAdapter.getProfileByPosition(cardStackLayoutManager.topPosition)
+            homeFragmentModel.exeLikeApi(
+                profile.id,
+                myPreferences.getAuthToken(),
+                object : ApiListener<SuccessResponse> {
+                    override fun onSuccess(body: SuccessResponse?) {
 
-                }
+                    }
 
-                override fun onFailure(error: Throwable) {
-                    error.printStackTrace()
-                }
+                    override fun onFailure(error: Throwable) {
+                        error.printStackTrace()
+                    }
 
-            })
+                })
+        }else{
+           // Toast.makeText(activity, "Last Index Reached", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun profileDisLiked() {
-        val profile = homeAdapter.getProfileByPosition(cardStackLayoutManager.topPosition)
-        homeFragmentModel.exeDisLikeApi(
-            profile.id,
-            myPreferences.getAuthToken(),
-            object : ApiListener<SuccessResponse> {
-                override fun onSuccess(body: SuccessResponse?) {
-                }
+        if(cardStackLayoutManager.topPosition!=profileList.size) {
+            val profile = homeAdapter.getProfileByPosition(cardStackLayoutManager.topPosition)
+            homeFragmentModel.exeDisLikeApi(
+                profile.id,
+                myPreferences.getAuthToken(),
+                object : ApiListener<SuccessResponse> {
+                    override fun onSuccess(body: SuccessResponse?) {
+                    }
 
-                override fun onFailure(error: Throwable) {
-                }
+                    override fun onFailure(error: Throwable) {
+                    }
 
-            })
+                })
+        }else{
+           // Toast.makeText(activity, "Last Index Reached", Toast.LENGTH_SHORT).show()
+        }
     }
 }
