@@ -47,21 +47,35 @@ class SettingsFragment : Fragment() {
         binding.layoutAddress.setOnClickListener {
                 findNavController().navigate(R.id.action_settingsFragment_to_addressFragment)
         }
-        val rangeSeekbar = binding.rangeSeekbar1
-        rangeSeekbar.setOnRangeSeekbarChangeListener { minValue, maxValue ->
-            binding.tvAgeRange.text = "Age $minValue-$maxValue"
-        }
+        setAgeSeekBar()
+        setDistanceSeekBar()
+    }
 
-        rangeSeekbar.setOnRangeSeekbarFinalValueListener { minValue, maxValue ->
-           // Toast.makeText(activity, "$minValue : $maxValue", Toast.LENGTH_SHORT).show()
-        }
-        val rangeSeekbarDistance = binding.rangeSeekbar2
-        rangeSeekbarDistance.setOnRangeSeekbarChangeListener { minValue, maxValue ->
+    private fun setDistanceSeekBar() {
+        val distanceRangeSeekbar = binding.rangeSeekbar2
+        distanceRangeSeekbar.setOnRangeSeekbarChangeListener { minValue, maxValue ->
             binding.tvDistanceSeekbar.text = "Distance $minValue-$maxValue"
         }
 
-        rangeSeekbarDistance.setOnRangeSeekbarFinalValueListener { minValue, maxValue ->
+        distanceRangeSeekbar.setOnRangeSeekbarFinalValueListener { minValue, maxValue ->
             //Toast.makeText(activity, "$minValue : $maxValue", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun setAgeSeekBar() {
+        val ageRangeSeekbar = binding.rangeSeekbar1
+        ageRangeSeekbar.setMinStartValue(myPreferences.minAge.toFloat())
+        ageRangeSeekbar.setMaxStartValue(myPreferences.maxAge.toFloat())
+        ageRangeSeekbar.setGap(5f)
+        ageRangeSeekbar.apply()
+        ageRangeSeekbar.setOnRangeSeekbarChangeListener { minValue, maxValue ->
+            binding.tvAgeRange.text = "Age $minValue-$maxValue"
+        }
+
+        ageRangeSeekbar.setOnRangeSeekbarFinalValueListener { minValue, maxValue ->
+            // Toast.makeText(activity, "$minValue : $maxValue", Toast.LENGTH_SHORT).show()
+            myPreferences.minAge = minValue.toInt()
+            myPreferences.maxAge = maxValue.toInt()
         }
     }
 }

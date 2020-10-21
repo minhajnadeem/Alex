@@ -20,6 +20,8 @@ class MyPreferences(context: Context) : BasePreferences(context) {
         val KEY_PROFILE = "key_profile"
         val KEY_FCM_TOKEN = "key_fcm_token"
         val KEY_CURRENT_LOCATION = "key_current_location"
+        val KEY_MIN_AGE = "key_minimum_age"
+        val KEY_MAX_AGE = "key_maximum_age"
 
     }
 
@@ -38,6 +40,14 @@ class MyPreferences(context: Context) : BasePreferences(context) {
         set(value) {
             putObject(KEY_PROFILE, value)
         }
+
+    var minAge:Int
+        get() {return getInt(KEY_MIN_AGE,20)}
+        set(value) {putInt(KEY_MIN_AGE,value)}
+
+    var maxAge:Int
+        get() {return getInt(KEY_MAX_AGE,50)}
+        set(value) {putInt(KEY_MAX_AGE,value)}
 
     fun getAuthToken(): String {
         val authResponse = getObject(KEY_PROFILE, ProfileResponse::class.java)

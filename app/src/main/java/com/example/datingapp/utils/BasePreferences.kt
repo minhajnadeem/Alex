@@ -31,6 +31,15 @@ abstract class BasePreferences(context: Context) {
         return sharedPreferences.getBoolean(key, defValue)
     }
 
+    fun putInt(key: String, value: Int) {
+        editor.putInt(key, value)
+        editor.apply()
+    }
+
+    fun getInt(key: String, defValue: Int): Int {
+        return sharedPreferences.getInt(key, defValue)
+    }
+
     fun <T> getObject(key: String, classOfT: Class<T>): T? {
         val gson = Gson()
         val stringObj = getString(key, "")
