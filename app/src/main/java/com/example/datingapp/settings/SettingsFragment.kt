@@ -13,6 +13,8 @@ import com.example.datingapp.R
 import com.example.datingapp.databinding.FragmentSettingsBinding
 import com.example.datingapp.splash.SplashActivity
 import com.example.datingapp.utils.MyPreferences
+import com.google.android.material.slider.RangeSlider
+import kotlinx.android.synthetic.main.fragment_settings.*
 
 
 class SettingsFragment : Fragment() {
@@ -47,24 +49,32 @@ class SettingsFragment : Fragment() {
         binding.layoutAddress.setOnClickListener {
                 findNavController().navigate(R.id.action_settingsFragment_to_addressFragment)
         }
-        setAgeSeekBar()
-        setDistanceSeekBar()
+        setAgeSlider()
+        setDistanceSlider()
     }
 
-    private fun setDistanceSeekBar() {
-        val distanceRangeSeekbar = binding.rangeSeekbar2
-        distanceRangeSeekbar.setOnRangeSeekbarChangeListener { minValue, maxValue ->
-            binding.tvDistanceSeekbar.text = "Distance $minValue-$maxValue"
-        }
+    private fun setDistanceSlider() {
+        //val distanceRangeSeekbar = binding.rangeSeekbar2
+        range_slider2.addOnSliderTouchListener(object : RangeSlider.OnSliderTouchListener {
+            override fun onStartTrackingTouch(slider: RangeSlider) {
+                // Responds to when slider's touch event is being started
+            }
 
-        distanceRangeSeekbar.setOnRangeSeekbarFinalValueListener { minValue, maxValue ->
-            //Toast.makeText(activity, "$minValue : $maxValue", Toast.LENGTH_SHORT).show()
+            override fun onStopTrackingTouch(slider: RangeSlider) {
+                // Responds to when slider's touch event is being stopped
+
+            }
+        })
+
+        range_slider2.addOnChangeListener { rangeSlider, value, fromUser ->
+            // Responds to when slider's value is changed
+
         }
     }
 
-    private fun setAgeSeekBar() {
-        val ageRangeSeekbar = binding.rangeSeekbar1
-        ageRangeSeekbar.setMinStartValue(myPreferences.minAge.toFloat())
+    private fun setAgeSlider() {
+        val ageRangeSlider = binding.rangeSlider
+       /* ageRangeSeekbar.setMinStartValue(myPreferences.minAge.toFloat())
         ageRangeSeekbar.setMaxStartValue(myPreferences.maxAge.toFloat())
         ageRangeSeekbar.setGap(5f)
         ageRangeSeekbar.apply()
@@ -72,10 +82,28 @@ class SettingsFragment : Fragment() {
             binding.tvAgeRange.text = "Age $minValue-$maxValue"
         }
 
-        ageRangeSeekbar.setOnRangeSeekbarFinalValueListener { minValue, maxValue ->
+        ageRangeSlider.setOnRangeSeekbarFinalValueListener { minValue, maxValue ->
             // Toast.makeText(activity, "$minValue : $maxValue", Toast.LENGTH_SHORT).show()
             myPreferences.minAge = minValue.toInt()
             myPreferences.maxAge = maxValue.toInt()
+        }*/
+
+        range_slider.addOnSliderTouchListener(object : RangeSlider.OnSliderTouchListener {
+            override fun onStartTrackingTouch(slider: RangeSlider) {
+                // Responds to when slider's touch event is being started
+            }
+
+            override fun onStopTrackingTouch(slider: RangeSlider) {
+                // Responds to when slider's touch event is being stopped
+                myPreferences.minAge = slider.values[0].toInt()
+                myPreferences.maxAge = slider.values[1].toInt()
+            }
+        })
+
+        range_slider.addOnChangeListener { rangeSlider, value, fromUser ->
+            // Responds to when slider's value is changed
+            Toast.makeText(activity, "Changed...", Toast.LENGTH_SHORT).show()
+            binding.tvAgeRange.text = "Age ${rangeSlider.values[0].toInt()}-${rangeSlider.values[1].toInt()}"
         }
     }
 }

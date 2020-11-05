@@ -104,21 +104,16 @@
                         android:layout_height="wrap_content"
                         android:text="age 20-50"
                         />
-                    <com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar
-                        android:id="@+id/rangeSeekbar1"
+                    <com.google.android.material.slider.RangeSlider
+                        android:id="@+id/range_slider"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:steps="5"
-                        app:gap="5"
-                        app:min_value="20"
-                        app:max_value="50"
-                        app:corner_radius="5"
-                        app:bar_highlight_color="@color/colorPrimaryDark"
-                        app:left_thumb_color_pressed="@color/colorPrimaryDark"
-                        app:left_thumb_color="@color/colorPrimaryDark"
-                        app:right_thumb_color_pressed="@color/colorPrimaryDark"
-                        app:right_thumb_color="@color/colorPrimaryDark"
-                        app:bar_color="@color/colorBlack"/>
+                        android:contentDescription="@string/str_discrete_slider"
+                        app:values="@array/initial_slider_values"
+                        android:valueFrom="20"
+                        android:valueTo="50"
+                        android:stepSize="5"
+                        app:minSeparation="@dimen/_5sdp"/>
 
                     <!--<SeekBar
                         android:id="@+id/ageSeekbar"
@@ -138,7 +133,7 @@
                     <!--<SeekBar
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />-->
-                    <com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar
+                    <!--<com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar
                         android:id="@+id/rangeSeekbar2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -153,7 +148,17 @@
                         app:right_thumb_color_pressed="@color/colorPrimaryDark"
                         app:right_thumb_color="@color/colorPrimaryDark"
                         app:bar_color="@color/colorBlack"
-                        android:layout_marginBottom="@dimen/_10sdp"/>
+                        android:layout_marginBottom="@dimen/_10sdp"/>-->
+                    <com.google.android.material.slider.RangeSlider
+                        android:id="@+id/range_slider2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/str_discrete_slider"
+                        app:values="@array/initial_slider_values"
+                        android:valueFrom="20"
+                        android:valueTo="50"
+                        android:stepSize="5"
+                        app:minSeparation="@dimen/_5sdp"/>
                 </LinearLayout>
 
 
