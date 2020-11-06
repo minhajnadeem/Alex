@@ -56,6 +56,8 @@ class SettingsFragment : Fragment() {
 
     private fun setDistanceSlider() {
         //val distanceRangeSeekbar = binding.rangeSeekbar2
+        slider2.value = myPreferences.radius.toFloat()
+        binding.tvDistanceRange.text = "Distance ${myPreferences.radius} Kms"
         slider2.addOnSliderTouchListener(object : Slider.OnSliderTouchListener {
             override fun onStartTrackingTouch(slider: Slider) {
                 // Responds to when slider's touch event is being started
@@ -88,7 +90,9 @@ class SettingsFragment : Fragment() {
             myPreferences.minAge = minValue.toInt()
             myPreferences.maxAge = maxValue.toInt()
         }*/
-
+        range_slider.values[0]=myPreferences.minAge.toFloat()
+        range_slider.values[1]=myPreferences.maxAge.toFloat()
+        binding.tvAgeRange.text = "Age ${myPreferences.minAge}-${myPreferences.maxAge}"
         range_slider.addOnSliderTouchListener(object : RangeSlider.OnSliderTouchListener {
             override fun onStartTrackingTouch(slider: RangeSlider) {
                 // Responds to when slider's touch event is being started
