@@ -100,6 +100,11 @@ class HomeFragment : Fragment(), CardStackListener {
         }
 
         homeFragmentModel.exeHomeDataApi(myPreferences.getAuthToken(),
+            myPreferences.currentLocation!!.latitude,
+            myPreferences.currentLocation!!.longitude,
+            myPreferences.minAge,
+            myPreferences.maxAge,
+            myPreferences.radius,
             object : ApiListener<HomeResponse> {
                 override fun onSuccess(body: HomeResponse?) {
                     if (body != null) {

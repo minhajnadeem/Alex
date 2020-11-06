@@ -4,8 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline10"
         android:layout_width="wrap_content"
@@ -102,7 +100,7 @@
                         style="@style/StyleSettingsFragmentLblDesc"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="age 20-50"
+                        android:text="Age 20-50"
                         />
                     <com.google.android.material.slider.RangeSlider
                         android:id="@+id/range_slider"
@@ -123,12 +121,12 @@
                         android:min="0"/>-->
 
                     <TextView
-                        android:id="@+id/tvDistanceSeekbar"
+                        android:id="@+id/tvDistanceRange"
                         style="@style/StyleSettingsFragmentLblDesc"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_5sdp"
-                        android:text="distance" />
+                        android:text="Distance" />
 
                     <!--<SeekBar
                         android:layout_width="match_parent"
@@ -149,16 +147,14 @@
                         app:right_thumb_color="@color/colorPrimaryDark"
                         app:bar_color="@color/colorBlack"
                         android:layout_marginBottom="@dimen/_10sdp"/>-->
-                    <com.google.android.material.slider.RangeSlider
-                        android:id="@+id/range_slider2"
+                    <com.google.android.material.slider.Slider
+                        android:id="@+id/slider2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:contentDescription="@string/str_discrete_slider"
-                        app:values="@array/initial_slider_values"
-                        android:valueFrom="20"
+                        android:valueFrom="5"
                         android:valueTo="50"
                         android:stepSize="5"
-                        app:minSeparation="@dimen/_5sdp"/>
+                        />
                 </LinearLayout>
 
 

@@ -24,7 +24,14 @@ data class FbLoginBody(@SerializedName("fb_token") val fbToken: String)
 
 data class GoogleLoginBody(@SerializedName("google_token") val googleToken: String)
 
-data class HomeBody(@SerializedName("auth_token") val authToken: String)
+data class HomeBody(
+    @SerializedName("auth_token") val authToken: String,
+    @SerializedName("min_age") val minAge: Int,
+    @SerializedName("max_age") val maxAge: Int,
+    @SerializedName("radius") val radius: Int,
+    @SerializedName("lat") val lat: Double,
+    @SerializedName("long") val long: Double
+)
 
 data class LikeBody(
     @SerializedName("liked_profile_id") val id: Int,
@@ -42,5 +49,10 @@ data class UpdateProfileBody(
     @SerializedName("date_of_birth") var dob: Any = JSONObject.NULL,
     @SerializedName("display_name") var displayName: Any = JSONObject.NULL,
     @SerializedName("about_me") var aboutMe: Any = JSONObject.NULL,
-    @SerializedName("age") var age: Any = JSONObject.NULL
+    @SerializedName("age") var age: Any = JSONObject.NULL,
+    @SerializedName("address") var address: Any = JSONObject.NULL,
+    @SerializedName("street") var street: Any = JSONObject.NULL,
+    @SerializedName("city") var city: Any = JSONObject.NULL,
+    @SerializedName("state") var state: Any = JSONObject.NULL,
+    @SerializedName("zip") var zip: Any = JSONObject.NULL
 )

@@ -14,6 +14,7 @@ import com.example.datingapp.databinding.FragmentSettingsBinding
 import com.example.datingapp.splash.SplashActivity
 import com.example.datingapp.utils.MyPreferences
 import com.google.android.material.slider.RangeSlider
+import com.google.android.material.slider.Slider
 import kotlinx.android.synthetic.main.fragment_settings.*
 
 
@@ -55,20 +56,20 @@ class SettingsFragment : Fragment() {
 
     private fun setDistanceSlider() {
         //val distanceRangeSeekbar = binding.rangeSeekbar2
-        range_slider2.addOnSliderTouchListener(object : RangeSlider.OnSliderTouchListener {
-            override fun onStartTrackingTouch(slider: RangeSlider) {
+        slider2.addOnSliderTouchListener(object : Slider.OnSliderTouchListener {
+            override fun onStartTrackingTouch(slider: Slider) {
                 // Responds to when slider's touch event is being started
             }
 
-            override fun onStopTrackingTouch(slider: RangeSlider) {
+            override fun onStopTrackingTouch(slider: Slider) {
                 // Responds to when slider's touch event is being stopped
-
+                myPreferences.radius = slider.value.toInt()
             }
         })
 
-        range_slider2.addOnChangeListener { rangeSlider, value, fromUser ->
+        slider2.addOnChangeListener { slider, value, fromUser ->
             // Responds to when slider's value is changed
-
+            binding.tvDistanceRange.text = "Distance ${slider.value.toInt()} Kms"
         }
     }
 
@@ -102,7 +103,7 @@ class SettingsFragment : Fragment() {
 
         range_slider.addOnChangeListener { rangeSlider, value, fromUser ->
             // Responds to when slider's value is changed
-            Toast.makeText(activity, "Changed...", Toast.LENGTH_SHORT).show()
+           // Toast.makeText(activity, "Changed...", Toast.LENGTH_SHORT).show()
             binding.tvAgeRange.text = "Age ${rangeSlider.values[0].toInt()}-${rangeSlider.values[1].toInt()}"
         }
     }

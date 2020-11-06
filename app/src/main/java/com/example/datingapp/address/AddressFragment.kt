@@ -21,14 +21,14 @@ class AddressFragment : Fragment() {
 
     private lateinit var binding: FragmentAddressBinding
     private lateinit var myPreferences: MyPreferences
-    /*private var profileResponse: ProfileResponse? = null
-    private lateinit var editProfileFragmentModel: EditProfileFragmentModel*/
+    private var profileResponse: ProfileResponse? = null
+    private lateinit var addressFragmentModel: AddressFragmentModel
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
         myPreferences = MyPreferences(context)
-        /*profileResponse = myPreferences.profile
-        editProfileFragmentModel = EditProfileFragmentModel()*/
+        profileResponse = myPreferences.profile
+        addressFragmentModel = AddressFragmentModel()
     }
 
     override fun onCreateView(
@@ -59,7 +59,7 @@ class AddressFragment : Fragment() {
                         if (event.getRawX() >= (binding.tvTitle.getRight() - binding.tvTitle.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds()
                                 .width())
                         ) {
-                            updateAdress()
+                            updateAddress()
                             return true;
                         }
                     }
@@ -67,18 +67,19 @@ class AddressFragment : Fragment() {
                 return false;
             }
         });
-        /*profileResponse?.apply {
-            binding.etDisplayName.setText(userName)
-            binding.etAboutMe.setText(aboutMe)
-            binding.etAge.setText(age)
-
-        }*/
+        profileResponse?.apply {
+            binding.etAddress.setText(address.address)
+            binding.etStreet.setText(address.street)
+            binding.etCity.setText(address.city)
+            binding.etState.setText(address.state)
+            binding.etZipCode.setText(address.zip)
+        }
     }
 
-    private fun updateAdress() {
-        Toast.makeText(requireContext(), "Updated Adress", Toast.LENGTH_LONG).show()
-        findNavController().popBackStack()
-        /*val listener = object : ApiListener<UpdateProfileResponse> {
+    private fun updateAddress() {
+        Toast.makeText(requireContext(), "Updating Address", Toast.LENGTH_LONG).show()
+        //findNavController().popBackStack()
+        val listener = object : ApiListener<UpdateProfileResponse> {
             override fun onSuccess(body: UpdateProfileResponse?) {
                 if (body != null) {
                     if (body.success) {
@@ -100,14 +101,16 @@ class AddressFragment : Fragment() {
             override fun onFailure(error: Throwable) {
                 error.printStackTrace()
             }
-        }*/
+        }
 
-       /* editProfileFragmentModel.updateMyProfile(
+        addressFragmentModel.updateMyProfile(
             authToken = myPreferences.getAuthToken(),
-            displayName = binding.etDisplayName.text.toString(),
-            aboutMe = binding.etAboutMe.text.toString(),
-            age = binding.etAge.text.toString(),
+            address = binding.etAddress.text.toString(),
+            street = binding.etStreet.text.toString(),
+            city = binding.etCity.text.toString(),
+            state = binding.etState.text.toString(),
+            zip = binding.etZipCode.text.toString(),
             listener = listener
-        )*/
+        )
     }
 }

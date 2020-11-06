@@ -30,6 +30,7 @@ data class ProfileResponse(
 ) : Serializable
 
 data class Address(
+    val address: String?,
     val street: String?,
     val city: String?,
     val state: String?,
