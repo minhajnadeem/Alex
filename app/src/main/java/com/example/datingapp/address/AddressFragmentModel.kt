@@ -16,6 +16,8 @@ class AddressFragmentModel : AlexWebserviceHelper() {
         city: Any = JSONObject.NULL,
         state: Any = JSONObject.NULL,
         zip: Any = JSONObject.NULL,
+        lat: Any? = JSONObject.NULL,
+        long: Any? = JSONObject.NULL,
         listener: ApiListener<UpdateProfileResponse>
     ) {
         val updateProfileBody = UpdateProfileBody(
@@ -24,7 +26,9 @@ class AddressFragmentModel : AlexWebserviceHelper() {
             street = street,
             city = city,
             state = state,
-            zip = zip
+            zip = zip,
+            lat = lat,
+            long = long
         )
         updateProfile(updateProfileBody, listener)
     }

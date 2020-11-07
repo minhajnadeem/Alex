@@ -16,6 +16,7 @@ import com.example.datingapp.networking.ApiListener
 import com.example.datingapp.networking.ProfileResponse
 import com.example.datingapp.networking.UpdateProfileResponse
 import com.example.datingapp.utils.MyPreferences
+import kotlin.math.ln
 
 class AddressFragment : Fragment() {
 
@@ -102,7 +103,8 @@ class AddressFragment : Fragment() {
                 error.printStackTrace()
             }
         }
-
+        val lat = myPreferences.currentLocation?.latitude
+        val lng = myPreferences.currentLocation?.longitude
         addressFragmentModel.updateMyProfile(
             authToken = myPreferences.getAuthToken(),
             address = binding.etAddress.text.toString(),
@@ -110,6 +112,8 @@ class AddressFragment : Fragment() {
             city = binding.etCity.text.toString(),
             state = binding.etState.text.toString(),
             zip = binding.etZipCode.text.toString(),
+            lat = lat,
+            long = lng,
             listener = listener
         )
     }

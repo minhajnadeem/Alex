@@ -100,8 +100,8 @@ class HomeFragment : Fragment(), CardStackListener {
         }
 
         homeFragmentModel.exeHomeDataApi(myPreferences.getAuthToken(),
-            myPreferences.currentLocation!!.latitude,
-            myPreferences.currentLocation!!.longitude,
+            myPreferences.currentLocation?.latitude,
+            myPreferences.currentLocation?.longitude,
             myPreferences.minAge,
             myPreferences.maxAge,
             myPreferences.radius,

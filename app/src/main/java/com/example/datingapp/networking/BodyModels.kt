@@ -29,8 +29,8 @@ data class HomeBody(
     @SerializedName("min_age") val minAge: Int,
     @SerializedName("max_age") val maxAge: Int,
     @SerializedName("radius") val radius: Int,
-    @SerializedName("lat") val lat: Double,
-    @SerializedName("long") val long: Double
+    @SerializedName("lat") val lat: Double?,
+    @SerializedName("long") val long: Double?
 )
 
 data class LikeBody(
@@ -54,5 +54,7 @@ data class UpdateProfileBody(
     @SerializedName("street") var street: Any = JSONObject.NULL,
     @SerializedName("city") var city: Any = JSONObject.NULL,
     @SerializedName("state") var state: Any = JSONObject.NULL,
-    @SerializedName("zip") var zip: Any = JSONObject.NULL
+    @SerializedName("zip") var zip: Any = JSONObject.NULL,
+    @SerializedName("lat") var lat: Any? = JSONObject.NULL,
+    @SerializedName("long") var long: Any? = JSONObject.NULL
 )
