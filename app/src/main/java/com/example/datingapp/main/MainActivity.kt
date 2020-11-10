@@ -90,7 +90,7 @@ class MainActivity : BaseActivity() {
         when (requestCode) {
             123 -> {
                 // If request is cancelled, the result arrays are empty.
-                if (grantResults[0] == PackageManager.PERMISSION_DENIED) {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_DENIED) {
                     showPermissionAlert()
                 } else {
                     if (ActivityCompat.checkSelfPermission(
