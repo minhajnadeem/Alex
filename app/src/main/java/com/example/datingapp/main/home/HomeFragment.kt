@@ -2,28 +2,27 @@ package com.example.datingapp.main.home
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.widget.Toast
-
+import androidx.fragment.app.Fragment
 import com.example.datingapp.databinding.FragmentHomeBinding
+import com.example.datingapp.events.HomeEvent
 import com.example.datingapp.networking.ApiListener
 import com.example.datingapp.networking.HomeResponse
 import com.example.datingapp.networking.ProfileResponse
 import com.example.datingapp.networking.SuccessResponse
 import com.example.datingapp.utils.AlexDialogsHelper
 import com.example.datingapp.utils.MyPreferences
-import com.example.datingapp.utils.notifications.MyFirebaseMessagingService
-import com.example.datingapp.utils.notifications.MyFirebaseMessagingService.Companion.TAG
 import com.example.datingapp.utils.notifications.NotificationsModel
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.iid.FirebaseInstanceId
 import com.yuyakaido.android.cardstackview.*
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
+
 
 /**
  * A simple [Fragment] subclass.
@@ -99,35 +98,7 @@ class HomeFragment : Fragment(), CardStackListener {
             profileLiked()
         }
 
-        homeFragmentModel.exeHomeDataApi(myPreferences.getAuthToken(),
-            myPreferences.currentLocation?.latitude,
-            myPreferences.currentLocation?.longitude,
-            myPreferences.minAge,
-            myPreferences.maxAge,
-            myPreferences.radius,
-            object : ApiListener<HomeResponse> {
-                override fun onSuccess(body: HomeResponse?) {
-                    if (body != null) {
-                        if (body.success) {
-                            profileList=body.profiles
-                            homeAdapter = HomeAdapter(body.profiles.reversed())
-                            binding.layoutCardStack.adapter = homeAdapter
-                        } else {
-                            AlexDialogsHelper().showToastMessage(
-                                requireContext(),
-                                "Something Went Wrong!"
-                            )
-//                            myPreferences.clearPrefs()
-                        }
-                    }
-                }
-
-                override fun onFailure(error: Throwable) {
-                    error.printStackTrace()
-                }
-
-            })
-
+        executeHomeApi()
         registerFcmToken()
     }
 
@@ -193,6 +164,42 @@ class HomeFragment : Fragment(), CardStackListener {
         }
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onHomeEvent(event: HomeEvent) {
+        executeHomeApi()
+    }
+
+    private fun executeHomeApi() {
+        homeFragmentModel.exeHomeDataApi(myPreferences.getAuthToken(),
+            myPreferences.currentLocation?.latitude,
+            myPreferences.currentLocation?.longitude,
+            myPreferences.minAge,
+            myPreferences.maxAge,
+            myPreferences.radius,
+            object : ApiListener<HomeResponse> {
+                override fun onSuccess(body: HomeResponse?) {
+                    if (body != null) {
+                        if (body.success) {
+                            profileList = body.profiles
+                            homeAdapter = HomeAdapter(body.profiles.reversed())
+                            binding.layoutCardStack.adapter = homeAdapter
+                        } else {
+                            AlexDialogsHelper().showToastMessage(
+                                requireContext(),
+                                "Something Went Wrong!"
+                            )
+                            //                            myPreferences.clearPrefs()
+                        }
+                    }
+                }
+
+                override fun onFailure(error: Throwable) {
+                    error.printStackTrace()
+                }
+
+            })
+    }
+
     private fun profileDisLiked() {
         if(cardStackLayoutManager.topPosition!=profileList.size) {
             val profile = homeAdapter.getProfileByPosition(cardStackLayoutManager.topPosition)
@@ -210,5 +217,15 @@ class HomeFragment : Fragment(), CardStackListener {
         }else{
            // Toast.makeText(activity, "Last Index Reached", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        EventBus.getDefault().register(this)
+    }
+
+    override fun onStop() {
+        EventBus.getDefault().unregister(this)
+        super.onStop()
     }
 }

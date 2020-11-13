@@ -19,6 +19,7 @@ import com.example.datingapp.MyApplication.Companion.AUTH_SECRET
 import com.example.datingapp.MyApplication.Companion.DEFAULT_USER_PASSWORD
 import com.example.datingapp.R
 import com.example.datingapp.databinding.ActivityMainBinding
+import com.example.datingapp.events.HomeEvent
 import com.example.datingapp.utils.MyPreferences
 import com.example.datingapp.videochat.BaseActivity
 import com.example.quickbloxvideocall.LoginService
@@ -34,6 +35,7 @@ import com.quickblox.core.QBEntityCallback
 import com.quickblox.core.exception.QBResponseException
 import com.quickblox.users.QBUsers
 import com.quickblox.users.model.QBUser
+import org.greenrobot.eventbus.EventBus
 
 class MainActivity : BaseActivity() {
 
@@ -64,6 +66,7 @@ class MainActivity : BaseActivity() {
             startPermissionsActivity(false)
         }
         setUpLocationListener()
+        fetchCurrentLocation()
     }
 
     private fun fetchCurrentLocation() {
@@ -149,6 +152,7 @@ class MainActivity : BaseActivity() {
                 val location = LocationModel(locationResult!!.lastLocation.latitude,locationResult.lastLocation.longitude)
                 myPreferences.currentLocation = location
                 val loc=myPreferences.currentLocation
+                EventBus.getDefault().post(HomeEvent())
                 stopLocationUpdates()
             }
         }
@@ -233,6 +237,5 @@ class MainActivity : BaseActivity() {
 
     override fun onResume() {
         super.onResume()
-        fetchCurrentLocation()
     }
 }
