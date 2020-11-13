@@ -90,8 +90,24 @@ class MainActivity : BaseActivity() {
         when (requestCode) {
             123 -> {
                 // If request is cancelled, the result arrays are empty.
-                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_DENIED) {
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    if (ActivityCompat.checkSelfPermission(
+                            this@MainActivity,
+                            Manifest.permission.ACCESS_FINE_LOCATION
+                        ) == PackageManager.PERMISSION_GRANTED
+                        && ActivityCompat.checkSelfPermission(
+                            this@MainActivity,
+                            Manifest.permission.ACCESS_COARSE_LOCATION
+                        ) == PackageManager.PERMISSION_GRANTED
+                    ) {
+                        fetchCurrentLocation()
+                    }
+                } else { //permission is granted now start a background service
                     showPermissionAlert()
+                }
+               /* if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_DENIED) {
+                    // showPermissionAlert()
+                    Toast.makeText(this, "Denied...", Toast.LENGTH_SHORT).show()
                 } else {
                     if (ActivityCompat.checkSelfPermission(
                             this,
@@ -104,7 +120,7 @@ class MainActivity : BaseActivity() {
                     ) {
                         fetchCurrentLocation()
                     }
-                }
+                }*/
             }
         }
     }

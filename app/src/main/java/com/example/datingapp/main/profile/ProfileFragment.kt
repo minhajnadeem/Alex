@@ -77,10 +77,10 @@ class ProfileFragment : Fragment() {
             Glide.with(this).load(it.profilePic).into(binding.ivProfile)
             binding.tvProfileName.text = it.userName
             setAge(it.dob)
-            if (it.address.street == null) {
+            if (it.address.address == null) {
                 binding.tvProfileAddress.text = "Add your address"
             } else {
-                binding.tvProfileAddress.text = it.address.street
+                binding.tvProfileAddress.text = it.address.address
             }
         }
         myBillingClient = MyBillingClient(requireActivity())
