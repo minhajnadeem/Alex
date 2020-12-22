@@ -23,6 +23,7 @@ class MyPreferences(context: Context) : BasePreferences(context) {
         val KEY_MIN_AGE = "key_minimum_age"
         val KEY_MAX_AGE = "key_maximum_age"
         val KEY_RADIUS = "key_radius"
+        val KEY_RCEIVER_ID = "key_receiver_id"
 
     }
 
@@ -41,6 +42,10 @@ class MyPreferences(context: Context) : BasePreferences(context) {
         set(value) {
             putObject(KEY_PROFILE, value)
         }
+
+    var receiverID:Int
+        get() {return getInt(KEY_RCEIVER_ID,0)}
+        set(value) {putInt(KEY_RCEIVER_ID,value)}
 
     var radius:Int
         get() {return getInt(KEY_RADIUS,5)}

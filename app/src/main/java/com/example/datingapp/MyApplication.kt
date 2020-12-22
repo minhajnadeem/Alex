@@ -3,6 +3,7 @@ package com.example.datingapp
 import android.app.Activity
 import android.app.Application
 import android.os.Bundle
+import com.google.firebase.FirebaseApp
 import com.quickblox.auth.session.QBSettings
 
 class MyApplication : Application(), Application.ActivityLifecycleCallbacks {
@@ -27,6 +28,7 @@ class MyApplication : Application(), Application.ActivityLifecycleCallbacks {
     override fun onCreate() {
         super.onCreate()
         instance = this
+        FirebaseApp.initializeApp(this);
         checkCredentials()
         initCredentials()
     }

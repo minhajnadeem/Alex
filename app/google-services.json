@@ -8,6 +8,51 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:463105223245:android:d8b0f48505db8a21284a04",
+        "android_client_info": {
+          "package_name": "com.example.beautyafricana"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "463105223245-9ib3j4d65l59e8pfmf0cddrnc5nakin4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.beautyafricana",
+            "certificate_hash": "150987f7e4455f7f0feb0a2c1e762383b7a7e924"
+          }
+        },
+        {
+          "client_id": "463105223245-jn7v8cttv28vg6o2q9ifqngv7n672lrq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.beautyafricana",
+            "certificate_hash": "c192526fe788733a3a79c5be5e26bb89ed3dc647"
+          }
+        },
+        {
+          "client_id": "463105223245-7k6imslq19o0sjrdccotd2v3oefieaso.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZHoBl69PqJfq2IqNLmJNq9O3vIENY67E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "463105223245-7k6imslq19o0sjrdccotd2v3oefieaso.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:463105223245:android:f0cff5aa236169d0284a04",
         "android_client_info": {
           "package_name": "com.example.datingapp"
@@ -20,6 +65,14 @@
           "android_info": {
             "package_name": "com.example.datingapp",
             "certificate_hash": "c192526fe788733a3a79c5be5e26bb89ed3dc647"
+          }
+        },
+        {
+          "client_id": "463105223245-jfs3dmphi8nv1rmcknq77pf3orucd594.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.datingapp",
+            "certificate_hash": "150987f7e4455f7f0feb0a2c1e762383b7a7e924"
           }
         },
         {
