@@ -3,5 +3,8 @@
 <base-config cleartextTrafficPermitted="true" />
 <domain-config cleartextTrafficPermitted="true">
     <domain includeSubdomains="true">http://18.222.150.210:8007</domain>
+    <domain includeSubdomains="true">d414976c9305.ngrok.io</domain>
+    <domain includeSubdomains="true">ee80ec06dd65.ngrok.io</domain>
+    <domain includeSubdomains="true">3.138.136.209:8000</domain>
 </domain-config>
 </network-security-config>

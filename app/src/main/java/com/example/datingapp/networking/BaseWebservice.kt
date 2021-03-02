@@ -11,7 +11,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object BaseWebservice {
 
-    private const val BASE_URL = "http://18.222.150.210:8007/"
+    private const val BASE_URL = "http://3.138.136.209:8000/"
+//    private const val BASE_URL = "http://ee80ec06dd65.ngrok.io/"
     private val clientBuilder = OkHttpClient.Builder()
     private val okHttpClient = buildClient()
     private val retrofitBuilder = Retrofit.Builder()
